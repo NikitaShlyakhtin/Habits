@@ -173,25 +173,30 @@ class _CustomCheckboxState extends State<CustomCheckbox> {
         SizedBox(
           width: 30,
           height: 30,
-          child: ElevatedButton(
-            onPressed: () {
-              setState(() {
-                checked = !checked;
-                checked ? widget.habit.done++ : widget.habit.done--;
-              });
-            },
-            style: ElevatedButton.styleFrom(
-              elevation: 0,
-              padding: EdgeInsets.zero,
-              shape: const CircleBorder(),
-              backgroundColor: checked
-                  ? stringToColor(widget.habit.color)
-                  : Theme.of(context).backgroundColor,
-            ),
-            child: Text(dayOfWeek.toString(),
-                style: TextStyle(
-                    color: Theme.of(context).colorScheme.onBackground)),
-          ),
+          child: Consumer<HabitList>(
+              builder: (context, habits, child) => ElevatedButton(
+                    onPressed: () {
+                      setState(() {
+                        widget.habit.doneThisWeek[widget.index] =
+                            !widget.habit.doneThisWeek[widget.index];
+                        widget.habit.doneThisWeek[widget.index]
+                            ? widget.habit.done++
+                            : widget.habit.done--;
+                        habits.saveData();
+                      });
+                    },
+                    style: ElevatedButton.styleFrom(
+                      elevation: 0,
+                      padding: EdgeInsets.zero,
+                      shape: const CircleBorder(),
+                      backgroundColor: widget.habit.doneThisWeek[widget.index]
+                          ? stringToColor(widget.habit.color)
+                          : Theme.of(context).backgroundColor,
+                    ),
+                    child: Text(dayOfWeek.toString(),
+                        style: TextStyle(
+                            color: Theme.of(context).colorScheme.onBackground)),
+                  )),
         )
       ],
     );
@@ -494,11 +499,25 @@ class HabitList extends ChangeNotifier {
 
   void loadData() {
     _habits = box.values.toList().cast<Habit>();
+    updateWeek();
   }
 
   void saveData() {
     box.clear();
     box.addAll(_habits);
+  }
+
+  void updateWeek() {
+    DateTime d = DateTime.now();
+    int weekDay = d.weekday;
+    int startOfCurrentWeek = d.subtract(Duration(days: weekDay - 1)).day;
+    if (_habits[0].startOfCurrentWeek != startOfCurrentWeek) {
+      for (var element in _habits) {
+        element.doneThisWeek = [for (int i = 0; i < 7; i++) false];
+        element.startOfCurrentWeek = startOfCurrentWeek;
+      }
+    }
+    saveData();
   }
 }
 

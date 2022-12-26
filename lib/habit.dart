@@ -16,5 +16,12 @@ class Habit {
   @HiveField(3)
   int done = 0;
 
+  @HiveField(4)
+  List doneThisWeek = [false, false, false, false, false, false, false];
+
+  @HiveField(5)
+  int startOfCurrentWeek =
+      DateTime.now().subtract(Duration(days: DateTime.now().weekday - 1)).day;
+
   Habit({required this.name, required this.color, required this.frequency});
 }
