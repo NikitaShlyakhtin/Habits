@@ -44,6 +44,8 @@ class HabitList extends ChangeNotifier {
   void closeBottomSheet(context) {
     newHabit.controller?.text = '';
     newHabit.frequency = 3;
+    newHabit.reminder = false;
+    newHabit.reminderController?.text = '';
     Navigator.of(context).pop();
   }
 
