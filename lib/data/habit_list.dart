@@ -20,6 +20,9 @@ class HabitList extends ChangeNotifier {
 
   set controller(controller) => (newHabit.controller = controller);
 
+  set reminderController(controller) =>
+      (newHabit.reminderController = controller);
+
   set color(color) {
     newHabit.color = color;
   }
@@ -31,6 +34,13 @@ class HabitList extends ChangeNotifier {
     notifyListeners();
   }
 
+  bool get reminder => (newHabit.reminder);
+
+  set reminder(bool value) {
+    newHabit.reminder = value;
+    notifyListeners();
+  }
+
   void closeBottomSheet(context) {
     newHabit.controller?.text = '';
     newHabit.frequency = 3;
@@ -39,10 +49,15 @@ class HabitList extends ChangeNotifier {
 
   void add() {
     String title = newHabit.controller?.text ?? '';
+    String reminderText = newHabit.reminderController?.text ?? '';
     int frequency = newHabit.frequency;
     Color? color = newHabit.color;
-    _habits.add(
-        Habit(name: title, frequency: frequency, color: colorToString(color)));
+    _habits.add(Habit(
+        name: title,
+        frequency: frequency,
+        color: colorToString(color),
+        reminder: reminder,
+        reminderText: reminderText));
     saveData();
     notifyListeners();
   }
@@ -50,8 +65,17 @@ class HabitList extends ChangeNotifier {
   void createInitialData() {
     _habits = [
       Habit(
-          name: 'Reading', color: colorToString(Colors.red[400]), frequency: 7),
-      Habit(name: 'Sport', color: colorToString(Colors.blue[400]), frequency: 3)
+          name: 'Reading',
+          color: colorToString(Colors.red[400]),
+          frequency: 7,
+          reminder: false,
+          reminderText: 'Habits!'),
+      Habit(
+          name: 'Sport',
+          color: colorToString(Colors.blue[400]),
+          frequency: 3,
+          reminder: false,
+          reminderText: 'Habits!')
     ];
   }
 
@@ -81,7 +105,9 @@ class HabitList extends ChangeNotifier {
 
 class NewHabit {
   TextEditingController? controller;
+  TextEditingController? reminderController;
   int frequency = 3;
+  bool reminder = false;
   Color? color = Colors.red[400];
 }
 

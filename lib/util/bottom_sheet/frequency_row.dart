@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:habit_tracker/widgets/title_column.dart';
 import 'package:provider/provider.dart';
 import 'package:habit_tracker/data/habit_list.dart';
 import 'package:habit_tracker/util/const.dart';
@@ -16,15 +17,7 @@ class FrequencyRow extends StatelessWidget {
       return Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Column(
-            children: [
-              Text('Frequency', style: Theme.of(context).textTheme.titleMedium),
-              Opacity(
-                  opacity: 0.5,
-                  child: Text('Times a week',
-                      style: Theme.of(context).textTheme.labelMedium))
-            ],
-          ),
+          const TitleColumn(primary: 'Frequency', secondary: 'Times a week'),
           Row(
             children: [
               Container(

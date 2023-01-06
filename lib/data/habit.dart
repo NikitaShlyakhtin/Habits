@@ -23,5 +23,16 @@ class Habit {
   int startOfCurrentWeek =
       DateTime.now().subtract(Duration(days: DateTime.now().weekday - 1)).day;
 
-  Habit({required this.name, required this.color, required this.frequency});
+  @HiveField(6)
+  bool reminder = false;
+
+  @HiveField(7)
+  String reminderText;
+
+  Habit(
+      {required this.name,
+      required this.color,
+      required this.frequency,
+      required this.reminder,
+      required this.reminderText});
 }

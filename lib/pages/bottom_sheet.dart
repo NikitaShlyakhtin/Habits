@@ -4,6 +4,7 @@ import 'package:habit_tracker/util/bottom_sheet/sheet_title_row.dart';
 import 'package:habit_tracker/util/bottom_sheet/input_habit_row.dart';
 import 'package:habit_tracker/util/bottom_sheet/frequency_row.dart';
 import 'package:habit_tracker/util/bottom_sheet/color_row.dart';
+import 'package:habit_tracker/util/bottom_sheet/reminder_row.dart';
 
 class MyBottomSheet extends StatelessWidget {
   const MyBottomSheet({super.key});
@@ -36,6 +37,8 @@ class BottomSheetColumn extends StatelessWidget {
         ColorRow(),
         Divider(thickness: 2),
         FrequencyRow(),
+        Divider(thickness: 2),
+        ReminderRow(),
         Divider(thickness: 2),
       ],
     );
