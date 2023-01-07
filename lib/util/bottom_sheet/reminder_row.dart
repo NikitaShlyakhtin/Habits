@@ -67,32 +67,59 @@ class TimeRow extends StatelessWidget {
   }
 }
 
-class TimeContainer extends StatelessWidget {
+class TimeContainer extends StatefulWidget {
   const TimeContainer({super.key});
 
   @override
+  State<TimeContainer> createState() => _TimeContainerState();
+}
+
+class _TimeContainerState extends State<TimeContainer> {
+  TimeOfDay time = const TimeOfDay(hour: 16, minute: 30);
+
+  @override
   Widget build(BuildContext context) {
+    final hours = time.hour.toString().padLeft(2, '0');
+    final minutes = time.minute.toString().padLeft(2, '0');
     var boxDecoration = BoxDecoration(
         color: Theme.of(context).colorScheme.surfaceVariant,
         borderRadius: borderRadius);
-    return Container(
-      height: 45,
-      padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 15),
-      decoration: boxDecoration,
-      child: Consumer<HabitList>(
-          builder: (context, habitList, child) => Row(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  const Opacity(
-                      opacity: 0.5, child: Icon(Icons.schedule, size: 20)),
-                  const SizedBox(width: 5),
-                  Opacity(
-                      opacity: 0.9,
-                      child: Text('16:00',
-                          style: Theme.of(context).textTheme.bodyLarge))
-                ],
-              )),
-    );
+    return Consumer<HabitList>(builder: (context, habitList, child) {
+      return Container(
+        height: 45,
+        padding: const EdgeInsets.symmetric(horizontal: 8),
+        decoration: boxDecoration,
+        child: TextButton(
+          onPressed: () async {
+            TimeOfDay? newTime =
+                await showTimePicker(context: context, initialTime: time);
+
+            if (newTime == null) return;
+            setState(() {
+              time = newTime;
+              habitList.time = time;
+            });
+          },
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              const Opacity(
+                  opacity: 0.5,
+                  child: Icon(
+                    Icons.schedule,
+                    size: 20,
+                    color: Colors.white,
+                  )),
+              const SizedBox(width: 5),
+              Opacity(
+                  opacity: 0.9,
+                  child: Text('$hours:$minutes',
+                      style: Theme.of(context).textTheme.bodyLarge))
+            ],
+          ),
+        ),
+      );
+    });
   }
 }
 

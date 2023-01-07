@@ -41,6 +41,11 @@ class HabitList extends ChangeNotifier {
     notifyListeners();
   }
 
+  set time(TimeOfDay time) {
+    newHabit.time = time;
+    notifyListeners();
+  }
+
   void closeBottomSheet(context) {
     newHabit.controller?.text = '';
     newHabit.frequency = 3;
@@ -54,12 +59,14 @@ class HabitList extends ChangeNotifier {
     String reminderText = newHabit.reminderController?.text ?? '';
     int frequency = newHabit.frequency;
     Color? color = newHabit.color;
+    TimeOfDay time = newHabit.time;
     _habits.add(Habit(
         name: title,
         frequency: frequency,
         color: colorToString(color),
         reminder: reminder,
-        reminderText: reminderText));
+        reminderText: reminderText,
+        time: timeToString(time)));
     saveData();
     notifyListeners();
   }
@@ -71,13 +78,15 @@ class HabitList extends ChangeNotifier {
           color: colorToString(Colors.red[400]),
           frequency: 7,
           reminder: false,
-          reminderText: 'Habits!'),
+          reminderText: 'Habits!',
+          time: '16:30'),
       Habit(
           name: 'Sport',
           color: colorToString(Colors.blue[400]),
           frequency: 3,
           reminder: false,
-          reminderText: 'Habits!')
+          reminderText: 'Habits!',
+          time: '16:30')
     ];
   }
 
@@ -110,6 +119,7 @@ class NewHabit {
   TextEditingController? reminderController;
   int frequency = 3;
   bool reminder = false;
+  TimeOfDay time = const TimeOfDay(hour: 16, minute: 30);
   Color? color = Colors.red[400];
 }
 
@@ -119,4 +129,17 @@ Color stringToColor(String s) {
 
 String colorToString(Color? c) {
   return c.toString().split('(0x')[1].split(')')[0];
+}
+
+String timeToString(TimeOfDay time) {
+  final hours = time.hour.toString().padLeft(2, '0');
+  final minutes = time.minute.toString().padLeft(2, '0');
+  return '$hours:$minutes';
+}
+
+TimeOfDay stringToTime(String time) {
+  var s = time.split(":");
+  final hours = int.parse(s[0]);
+  final minutes = int.parse(s[1]);
+  return TimeOfDay(hour: hours, minute: minutes);
 }

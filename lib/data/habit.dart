@@ -29,10 +29,14 @@ class Habit {
   @HiveField(7)
   String reminderText;
 
+  @HiveField(8)
+  String time;
+
   Habit(
       {required this.name,
       required this.color,
       required this.frequency,
       required this.reminder,
-      required this.reminderText});
+      required this.reminderText,
+      required this.time});
 }
