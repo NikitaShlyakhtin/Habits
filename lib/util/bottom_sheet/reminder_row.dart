@@ -56,14 +56,9 @@ class _MySwitchState extends State<MySwitch> {
   }
 }
 
-class TimeRow extends StatefulWidget {
+class TimeRow extends StatelessWidget {
   const TimeRow({super.key});
 
-  @override
-  State<TimeRow> createState() => _TimeRowState();
-}
-
-class _TimeRowState extends State<TimeRow> {
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -72,14 +67,9 @@ class _TimeRowState extends State<TimeRow> {
   }
 }
 
-class TimeContainer extends StatefulWidget {
+class TimeContainer extends StatelessWidget {
   const TimeContainer({super.key});
 
-  @override
-  State<TimeContainer> createState() => _TimeContainerState();
-}
-
-class _TimeContainerState extends State<TimeContainer> {
   @override
   Widget build(BuildContext context) {
     var boxDecoration = BoxDecoration(
