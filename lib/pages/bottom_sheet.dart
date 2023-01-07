@@ -31,15 +31,15 @@ class BottomSheetColumn extends StatelessWidget {
   Widget build(BuildContext context) {
     return Wrap(
       runSpacing: 20,
-      children: const [
-        SheetTitleRow(),
+      children: [
+        const SheetTitleRow(),
         InputHabitRow(),
-        ColorRow(),
-        Divider(thickness: 2),
-        FrequencyRow(),
-        Divider(thickness: 2),
-        ReminderRow(),
-        Divider(thickness: 2),
+        const ColorRow(),
+        const Divider(thickness: 2),
+        const FrequencyRow(),
+        const Divider(thickness: 2),
+        const ReminderRow(),
+        const Divider(thickness: 2),
       ],
     );
   }
