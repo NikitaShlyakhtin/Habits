@@ -27,8 +27,11 @@ class SheetTitleRow extends StatelessWidget {
                 style: TextStyle(fontWeight: FontWeight.w600)),
             TextButton(
                 onPressed: () {
-                  habitList.add();
-                  habitList.closeBottomSheet(context);
+                  if (habitList.newHabit.controller?.text != null &&
+                      habitList.newHabit.controller?.text != '') {
+                    habitList.add();
+                    habitList.closeBottomSheet(context);
+                  }
                 },
                 child: Opacity(
                     opacity: 0.5,

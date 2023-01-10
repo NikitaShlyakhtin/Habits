@@ -90,16 +90,18 @@ class _TimeContainerState extends State<TimeContainer> {
         padding: const EdgeInsets.symmetric(horizontal: 8),
         decoration: boxDecoration,
         child: TextButton(
-          onPressed: () async {
-            TimeOfDay? newTime =
-                await showTimePicker(context: context, initialTime: time);
+          onPressed: habitList.reminder
+              ? () async {
+                  TimeOfDay? newTime =
+                      await showTimePicker(context: context, initialTime: time);
 
-            if (newTime == null) return;
-            setState(() {
-              time = newTime;
-              habitList.time = time;
-            });
-          },
+                  if (newTime == null) return;
+                  setState(() {
+                    time = newTime;
+                    habitList.time = time;
+                  });
+                }
+              : null,
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [

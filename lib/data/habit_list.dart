@@ -1,8 +1,12 @@
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:habit_tracker/data/habit.dart';
+import 'package:habit_tracker/util/notification_service.dart';
 
 class HabitList extends ChangeNotifier {
+  late int id;
   final NewHabit newHabit = NewHabit();
   final box = Hive.box('box');
 
@@ -60,6 +64,7 @@ class HabitList extends ChangeNotifier {
     int frequency = newHabit.frequency;
     Color? color = newHabit.color;
     TimeOfDay time = newHabit.time;
+
     _habits.add(Habit(
         name: title,
         frequency: frequency,
@@ -67,11 +72,19 @@ class HabitList extends ChangeNotifier {
         reminder: reminder,
         reminderText: reminderText,
         time: timeToString(time)));
+
+    if (reminder) {
+      LocalNoticeService().scheduleDailyNotification(
+          id, title, reminderText, time.hour, time.minute);
+      id++;
+    }
+
     saveData();
     notifyListeners();
   }
 
   void createInitialData() {
+    id = 0;
     _habits = [
       Habit(
           name: 'Reading',
@@ -91,13 +104,15 @@ class HabitList extends ChangeNotifier {
   }
 
   void loadData() {
-    _habits = box.values.toList().cast<Habit>();
+    List list = box.values.toList();
+    id = list[0];
+    _habits = list[1].cast<Habit>();
     updateWeek();
   }
 
   void saveData() {
     box.clear();
-    box.addAll(_habits);
+    box.addAll([id, _habits]);
   }
 
   void updateWeek() {
