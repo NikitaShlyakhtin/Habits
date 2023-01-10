@@ -13,7 +13,11 @@ class FrequencyAndReminder extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [FrequencyInfo(frequency), const Gap(), ReminderInfo(reminder)],
+      children: [
+        Expanded(child: FrequencyInfo(frequency)),
+        const Gap(),
+        Expanded(child: ReminderInfo(reminder))
+      ],
     );
   }
 }

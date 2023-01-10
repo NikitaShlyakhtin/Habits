@@ -18,9 +18,9 @@ class FrequencyInfo extends StatelessWidget {
       decoration: boxDecoration,
       padding: blockPadding,
       child: Row(
-        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           const Icon(
+            size: 27,
             Icons.repeat,
             color: Colors.white,
           ),

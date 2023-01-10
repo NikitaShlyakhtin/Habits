@@ -25,6 +25,7 @@ class HabitInfo extends StatelessWidget {
         ),
         body: Container(
           margin: blockMargin,
+          width: double.infinity,
           child: Column(
             children: [
               FrequencyAndReminder(
