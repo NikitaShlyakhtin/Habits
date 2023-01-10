@@ -18,7 +18,7 @@ class TitleColumn extends StatelessWidget {
       children: [
         Text(primary,
             style: big
-                ? const TextStyle(fontWeight: FontWeight.bold, fontSize: 22)
+                ? const TextStyle(fontWeight: FontWeight.bold, fontSize: 20)
                 : Theme.of(context).textTheme.titleMedium),
         Opacity(
             opacity: 0.5,
