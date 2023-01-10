@@ -23,8 +23,8 @@ class HabitTile extends StatelessWidget {
         decoration: BoxDecoration(
             color: Theme.of(context).colorScheme.surfaceVariant,
             borderRadius: borderRadius),
-        margin: const EdgeInsets.all(10.0),
-        padding: const EdgeInsets.all(15.0),
+        margin: blockMargin,
+        padding: blockPadding,
         child: Column(
           children: [
             HabitTileText(habit.name, habit.frequency),
