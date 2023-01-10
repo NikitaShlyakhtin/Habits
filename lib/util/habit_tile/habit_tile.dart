@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:habit_tracker/data/habit.dart';
+import 'package:habit_tracker/pages/habit_info.dart';
 import 'package:habit_tracker/util/const.dart';
 import 'package:habit_tracker/util/habit_tile/checkbox.dart';
 
@@ -9,19 +10,28 @@ class HabitTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 110,
-      decoration: BoxDecoration(
-          color: Theme.of(context).colorScheme.surfaceVariant,
-          borderRadius: borderRadius),
-      margin: const EdgeInsets.all(10.0),
-      padding: const EdgeInsets.all(15.0),
-      child: Column(
-        children: [
-          HabitTileText(habit.name, habit.frequency),
-          const SizedBox(height: 10),
-          HabitTileWeek(habit)
-        ],
+    return GestureDetector(
+      onTap: () {
+        Navigator.of(context).push(
+          MaterialPageRoute(
+            builder: (context) => HabitInfo(habit: habit),
+          ),
+        );
+      },
+      child: Container(
+        height: 110,
+        decoration: BoxDecoration(
+            color: Theme.of(context).colorScheme.surfaceVariant,
+            borderRadius: borderRadius),
+        margin: const EdgeInsets.all(10.0),
+        padding: const EdgeInsets.all(15.0),
+        child: Column(
+          children: [
+            HabitTileText(habit.name, habit.frequency),
+            const SizedBox(height: 10),
+            HabitTileWeek(habit)
+          ],
+        ),
       ),
     );
   }
