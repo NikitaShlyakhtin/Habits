@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:habit_tracker/data/habit.dart';
+import 'package:habit_tracker/widgets/gap.dart';
 import 'package:habit_tracker/widgets/my_text_field.dart';
 import 'package:habit_tracker/widgets/title_column.dart';
 import 'package:provider/provider.dart';
@@ -61,9 +62,11 @@ class TimeRow extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [const TimeContainer(), ReminderTextContainer()]);
+    return Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
+      const TimeContainer(),
+      const Gap(),
+      Expanded(child: ReminderTextContainer())
+    ]);
   }
 }
 
@@ -109,7 +112,7 @@ class _TimeContainerState extends State<TimeContainer> {
                   opacity: 0.5,
                   child: Icon(
                     Icons.schedule,
-                    size: 20,
+                    size: 24,
                     color: Colors.white,
                   )),
               const SizedBox(width: 5),
