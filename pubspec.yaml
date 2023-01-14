@@ -46,6 +46,7 @@ dependencies:
   timezone: ^0.9.1
   device_info_plus: ^8.0.0
   percent_indicator: ^4.2.2
+  fl_chart: ^0.55.2
 
 dev_dependencies:
   build_runner: ^2.3.3

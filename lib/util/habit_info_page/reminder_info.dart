@@ -19,7 +19,7 @@ class ReminderInfo extends StatelessWidget {
           Opacity(
             opacity: reminder ? 1 : 0.5,
             child: Icon(
-              size: 27,
+              size: 26,
               reminder
                   ? Icons.notifications_outlined
                   : Icons.notifications_off_outlined,
@@ -30,7 +30,7 @@ class ReminderInfo extends StatelessWidget {
           Opacity(
               opacity: reminder ? 1 : 0.5,
               child: Text(reminder ? 'Reminder On' : 'Reminder Off',
-                  style: const TextStyle(fontSize: 16)))
+                  style: const TextStyle(fontSize: 15)))
         ],
       ),
     );

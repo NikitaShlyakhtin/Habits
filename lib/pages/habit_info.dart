@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:habit_tracker/data/habit.dart';
 import 'package:habit_tracker/util/const.dart';
 import 'package:habit_tracker/util/habit_info_page/frequency_and_reminder.dart';
+import 'package:habit_tracker/util/habit_info_page/statistic_graph.dart';
 import 'package:habit_tracker/util/habit_info_page/statistic_numbers.dart';
 import 'package:habit_tracker/widgets/gap.dart';
 import 'package:habit_tracker/data/habit_list.dart';
@@ -35,7 +36,10 @@ class HabitInfo extends StatelessWidget {
                   frequency: habit.frequency, reminder: habit.reminder),
               const Gap(),
               StatisticNumbers(
-                  0.65, 125, 42, 45, 63, stringToColor(habit.color))
+                  0.65, 125, 42, 45, 63, stringToColor(habit.color)),
+              const Gap(),
+              StatisticGraph([100, 78, 65, 55, 20, 10, 80, 74, 60, 33, 70, 54],
+                  stringToColor(habit.color))
             ],
           ),
         ));

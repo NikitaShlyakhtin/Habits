@@ -20,7 +20,7 @@ class FrequencyInfo extends StatelessWidget {
       child: Row(
         children: [
           const Icon(
-            size: 27,
+            size: 26,
             Icons.repeat,
             color: Colors.white,
           ),
@@ -28,7 +28,7 @@ class FrequencyInfo extends StatelessWidget {
           Opacity(
               opacity: 0.5,
               child: Text(frequencyToString(frequency),
-                  style: const TextStyle(fontSize: 16)))
+                  style: const TextStyle(fontSize: 15)))
         ],
       ),
     );
