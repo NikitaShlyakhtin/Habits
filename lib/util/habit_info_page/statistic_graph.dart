@@ -67,11 +67,14 @@ class _StatisticGraphState extends State<StatisticGraph> {
   }
 
   Widget bottomTitleWidgets(double value, TitleMeta meta) {
-    value++;
     var style = Theme.of(context).textTheme.labelMedium;
     Widget text;
 
-    String s = value > 9 ? value.toInt().toString() : '0${value.toInt()}';
+    int month = DateTime.now().month;
+    int valueMonth = month - 11 + value.toInt();
+    valueMonth = valueMonth > 0 ? valueMonth : 12 + valueMonth;
+
+    String s = valueMonth > 9 ? valueMonth.toString() : '0$valueMonth';
     text = Opacity(opacity: 0.5, child: Text(s, style: style));
 
     return SideTitleWidget(

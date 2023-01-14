@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:habit_tracker/data/habit_conversion.dart';
 import 'package:provider/provider.dart';
 import 'package:habit_tracker/data/habit.dart';
 import 'package:habit_tracker/data/habit_list.dart';
@@ -40,6 +41,7 @@ class _CustomCheckboxState extends State<CustomCheckbox> {
                         widget.habit.doneThisWeek[widget.index]
                             ? widget.habit.done++
                             : widget.habit.done--;
+                        widget.habit.updateDoneThisYear();
                         habits.saveData();
                       });
                     },

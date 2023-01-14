@@ -12,9 +12,9 @@ class CircularIndicator extends StatelessWidget {
       radius: 31,
       lineWidth: 7,
       animation: true,
-      percent: value,
+      percent: value <= 1 ? value : 1,
       center: Text(
-        '${value * 10}',
+        '${double.parse((value * 10).toStringAsFixed(1))}',
         style: Theme.of(context).textTheme.titleMedium,
       ),
       progressColor: color,

@@ -1,6 +1,5 @@
-import 'dart:ffi';
-
 import 'package:flutter/material.dart';
+import 'package:habit_tracker/data/habit_conversion.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:habit_tracker/data/habit.dart';
 import 'package:habit_tracker/util/notification_service.dart';
@@ -136,25 +135,4 @@ class NewHabit {
   bool reminder = false;
   TimeOfDay time = const TimeOfDay(hour: 16, minute: 30);
   Color? color = Colors.red[400];
-}
-
-Color stringToColor(String s) {
-  return Color(int.parse(s, radix: 16));
-}
-
-String colorToString(Color? c) {
-  return c.toString().split('(0x')[1].split(')')[0];
-}
-
-String timeToString(TimeOfDay time) {
-  final hours = time.hour.toString().padLeft(2, '0');
-  final minutes = time.minute.toString().padLeft(2, '0');
-  return '$hours:$minutes';
-}
-
-TimeOfDay stringToTime(String time) {
-  var s = time.split(":");
-  final hours = int.parse(s[0]);
-  final minutes = int.parse(s[1]);
-  return TimeOfDay(hour: hours, minute: minutes);
 }

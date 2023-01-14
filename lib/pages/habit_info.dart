@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:habit_tracker/data/habit.dart';
+import 'package:habit_tracker/data/habit_conversion.dart';
 import 'package:habit_tracker/util/const.dart';
 import 'package:habit_tracker/util/habit_info_page/frequency_and_reminder_row/frequency_and_reminder.dart';
 import 'package:habit_tracker/util/habit_info_page/statistic_graph.dart';
 import 'package:habit_tracker/util/habit_info_page/statistic_heatmap.dart';
 import 'package:habit_tracker/util/habit_info_page/statistic_numbers_row/statistic_numbers.dart';
 import 'package:habit_tracker/widgets/gap.dart';
-import 'package:habit_tracker/data/habit_list.dart';
 
 class HabitInfo extends StatelessWidget {
   final Habit habit;
@@ -14,6 +14,14 @@ class HabitInfo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double circle = habit.total / 100;
+    int times = habit.times;
+    int missed = habit.missed;
+    int month = habit.month;
+    int total = habit.total;
+    List dataForHeatmap = convertForHeatmap(habit.doneThisYear);
+    List<double> dataForGraph = convertForGraph(habit);
+
     return Scaffold(
         backgroundColor: Theme.of(context).colorScheme.background,
         appBar: AppBar(
@@ -36,12 +44,12 @@ class HabitInfo extends StatelessWidget {
               FrequencyAndReminder(
                   frequency: habit.frequency, reminder: habit.reminder),
               const Gap(),
-              StatisticNumbers(
-                  0.65, 125, 42, 45, 63, stringToColor(habit.color)),
+              StatisticNumbers(circle, times, missed, month, total,
+                  stringToColor(habit.color)),
               const Gap(),
-              StatisticGraph(testGraph, stringToColor(habit.color)),
+              StatisticGraph(dataForGraph, stringToColor(habit.color)),
               const Gap(),
-              StatisticHeatmap(testHeatmap, stringToColor(habit.color))
+              StatisticHeatmap(dataForHeatmap, stringToColor(habit.color))
             ],
           ),
         ));
