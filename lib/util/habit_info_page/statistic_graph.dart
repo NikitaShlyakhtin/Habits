@@ -157,6 +157,7 @@ class _StatisticGraphState extends State<StatisticGraph> {
         LineChartBarData(
           spots: spots,
           isCurved: true,
+          preventCurveOverShooting: true,
           color: widget.color,
           barWidth: 3,
           isStrokeCapRound: true,
