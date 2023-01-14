@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:habit_tracker/util/habit_info_page/reminder_info.dart';
+import 'package:habit_tracker/util/habit_info_page/frequency_and_reminder_row/reminder_info.dart';
 import 'package:habit_tracker/widgets/gap.dart';
-import 'package:habit_tracker/util/habit_info_page/frequency_info.dart';
+import 'package:habit_tracker/util/habit_info_page/frequency_and_reminder_row/frequency_info.dart';
 
 class FrequencyAndReminder extends StatelessWidget {
   final int frequency;

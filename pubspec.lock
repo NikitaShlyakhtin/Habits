@@ -230,6 +230,20 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  flutter_annual_task:
+    dependency: "direct main"
+    description:
+      name: flutter_annual_task
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.2.0"
+  flutter_heatmap_calendar:
+    dependency: "direct main"
+    description:
+      name: flutter_heatmap_calendar
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.0.5"
   flutter_lints:
     dependency: "direct dev"
     description:

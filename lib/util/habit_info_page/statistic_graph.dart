@@ -32,7 +32,7 @@ class _StatisticGraphState extends State<StatisticGraph> {
             children: [
               const Text(
                 'Statistic',
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
               ),
               Container(
                 decoration: BoxDecoration(
@@ -55,9 +55,8 @@ class _StatisticGraphState extends State<StatisticGraph> {
             ],
           ),
           const Gap(),
-          const Gap(),
           AspectRatio(
-            aspectRatio: 1.8,
+            aspectRatio: 1.7,
             child: LineChart(
               mainData(),
             ),
@@ -130,7 +129,7 @@ class _StatisticGraphState extends State<StatisticGraph> {
         bottomTitles: AxisTitles(
           sideTitles: SideTitles(
             showTitles: true,
-            reservedSize: 30,
+            reservedSize: 20,
             interval: 1,
             getTitlesWidget: bottomTitleWidgets,
           ),

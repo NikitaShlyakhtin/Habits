@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:habit_tracker/util/const.dart';
-import 'package:habit_tracker/util/habit_info_page/circular_indicator.dart';
+import 'package:habit_tracker/util/habit_info_page/statistic_numbers_row/circular_indicator.dart';
 import 'package:habit_tracker/widgets/my_vertical_divider.dart';
 import 'package:habit_tracker/widgets/title_column.dart';
 
