@@ -20,10 +20,6 @@ class Habit {
   @HiveField(4)
   List doneThisWeek = [false, false, false, false, false, false, false];
 
-  @HiveField(5)
-  int startOfCurrentWeek =
-      DateTime.now().subtract(Duration(days: DateTime.now().weekday - 1)).day;
-
   @HiveField(6)
   bool reminder = false;
 
