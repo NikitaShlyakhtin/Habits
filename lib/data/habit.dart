@@ -32,13 +32,17 @@ class Habit {
   @HiveField(9)
   Map<String, bool> doneThisYear = {};
 
+  @HiveField(10)
+  int id;
+
   Habit(
       {required this.name,
       required this.color,
       required this.frequency,
       required this.reminder,
       required this.reminderText,
-      required this.time});
+      required this.time,
+      required this.id});
 
   int get times {
     int times = 0;
@@ -54,10 +58,6 @@ class Habit {
   }
 
   int get missed {
-    int n = 0;
-    for (var day in doneThisYear.values) {
-      if (!day) n++;
-    }
     int passedWeeks = (all / 7).round();
     int missed = (frequency * passedWeeks) - times;
     return missed > 0 ? missed : 0;
@@ -76,13 +76,16 @@ class Habit {
       }
     }
     int passedWeeks = (monthAll / 7).round();
-    return ((monthDone / (passedWeeks * frequency)) * 100).round();
+    double n = ((monthDone / (passedWeeks * frequency)) * 100);
+    int month = n.isNaN || n.isInfinite ? 0 : n.round();
+    return month;
   }
 
   int get total {
     int total = 0;
     int passedWeeks = (all / 7).round();
-    total = ((times / (passedWeeks * frequency)) * 100).round();
+    double n = ((times / (passedWeeks * frequency)) * 100);
+    total = n.isNaN || n.isInfinite ? 0 : n.round();
     return total;
   }
 

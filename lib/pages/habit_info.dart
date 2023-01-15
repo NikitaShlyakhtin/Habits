@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:habit_tracker/data/habit.dart';
 import 'package:habit_tracker/data/habit_conversion.dart';
 import 'package:habit_tracker/util/const.dart';
+import 'package:habit_tracker/util/habit_info_page/edit_menu/edit_menu.dart';
 import 'package:habit_tracker/util/habit_info_page/frequency_and_reminder_row/frequency_and_reminder.dart';
 import 'package:habit_tracker/util/habit_info_page/statistic_graph.dart';
 import 'package:habit_tracker/util/habit_info_page/statistic_heatmap.dart';
@@ -35,6 +36,7 @@ class HabitInfo extends StatelessWidget {
             style: const TextStyle(fontWeight: FontWeight.w600),
           ),
           centerTitle: true,
+          actions: [EditMenu(habit)],
         ),
         body: Container(
           margin: blockMargin,

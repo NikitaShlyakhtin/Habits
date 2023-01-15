@@ -71,15 +71,24 @@ class HabitList extends ChangeNotifier {
         color: colorToString(color),
         reminder: reminder,
         reminderText: reminderText,
-        time: timeToString(time)));
+        time: timeToString(time),
+        id: id));
 
     if (reminder) {
       LocalNoticeService().scheduleDailyNotification(
           id, title, reminderText, time.hour, time.minute);
-      id++;
     }
 
+    id++;
+
     saveData();
+    notifyListeners();
+  }
+
+  void remove(Habit habit) {
+    _habits.remove(habit);
+    saveData();
+    LocalNoticeService().cancelNotification(habit.id);
     notifyListeners();
   }
 
@@ -94,14 +103,16 @@ class HabitList extends ChangeNotifier {
           frequency: 7,
           reminder: false,
           reminderText: 'Habits!',
-          time: '16:30'),
+          time: '16:30',
+          id: 0),
       Habit(
           name: 'Sport',
           color: colorToString(Colors.blue[400]),
           frequency: 3,
           reminder: false,
           reminderText: 'Habits!',
-          time: '16:30')
+          time: '16:30',
+          id: 1)
     ];
   }
 

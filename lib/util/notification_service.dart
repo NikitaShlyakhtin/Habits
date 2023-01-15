@@ -60,6 +60,10 @@ class LocalNoticeService {
         matchDateTimeComponents: DateTimeComponents.time);
   }
 
+  Future<void> cancelNotification(int id) async {
+    await _localNotificationsPlugin.cancel(id);
+  }
+
   Future<void> setup() async {
     tzData.initializeTimeZones();
 
