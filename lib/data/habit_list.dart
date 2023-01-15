@@ -6,6 +6,7 @@ import 'package:habit_tracker/util/notification_service.dart';
 
 class HabitList extends ChangeNotifier {
   late int id;
+  late bool isNew;
   late int _startOfCurrentWeek;
   final NewHabit newHabit = NewHabit();
   final box = Hive.box('box');
@@ -94,6 +95,7 @@ class HabitList extends ChangeNotifier {
 
   void createInitialData() {
     id = 0;
+    isNew = true;
     _startOfCurrentWeek =
         DateTime.now().subtract(Duration(days: DateTime.now().weekday - 1)).day;
     _habits = [
@@ -114,11 +116,13 @@ class HabitList extends ChangeNotifier {
           time: '16:30',
           id: 1)
     ];
+    saveData();
   }
 
   void loadData() {
     List list = box.values.toList();
     id = list[0];
+    isNew = false;
     _habits = list[1].cast<Habit>();
     _startOfCurrentWeek = list[2];
     updateWeek();
