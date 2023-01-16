@@ -1,8 +1,14 @@
 # Habits
 
-Flutter mobile app for iOS and Android for tracking habits. 
+## Mobile app for tracking habits build with Flutter 
 
-Habits will help you keep track of your healthy habits thanks to its simple design and functionality for analyzing your achievements. For each habit, you can add daily reminders with a given text.
+**Habits** will help you keep track of your beneficial habits thanks to its simple design and functionality for analyzing chievements. For each habit, you can:
+* Mark completed days
+* Change color and frequency
+* Add daily reminders with choosen time
+* Write your own reminder text 
+* See the statistics for the year in the form of a graph and a heatmap
+* Analyze the percentage of feasibility for a month and all the time
 
 ||||
 |:-:|:-:|:-:|
