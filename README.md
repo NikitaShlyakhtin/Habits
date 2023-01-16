@@ -1,16 +1,9 @@
-# habit_tracker
+# Habits
 
-A new Flutter project.
+Flutter mobile app for iOS and Android for tracking habits. 
 
-## Getting Started
+||||
+|:-:|:-:|:-:|
+|![Home page](https://github.com/NikitaShlyakhtin/habit_tracker/blob/2c02a419b48b9416ebc969041f24839ff4c7e591/assets/presentation_screens/eng/01.png)|![Statistics](https://github.com/NikitaShlyakhtin/habit_tracker/blob/2c02a419b48b9416ebc969041f24839ff4c7e591/assets/presentation_screens/eng/02.png)|![New habit](https://github.com/NikitaShlyakhtin/habit_tracker/blob/2c02a419b48b9416ebc969041f24839ff4c7e591/assets/presentation_screens/eng/03.png)|
 
-This project is a starting point for a Flutter application.
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
