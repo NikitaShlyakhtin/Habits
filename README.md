@@ -10,6 +10,8 @@
 * See the statistics for the year in the form of a graph and a heatmap
 * Analyze the percentage of feasibility for a month and all the time
 
+[Download](https://apps.rustore.ru/app/com.nikitashlyakhtin.habits) Habits on Rustore
+
 ||||
 |:-:|:-:|:-:|
 |![Home page](https://github.com/NikitaShlyakhtin/habit_tracker/blob/2c02a419b48b9416ebc969041f24839ff4c7e591/assets/presentation_screens/eng/01.png)|![Statistics](https://github.com/NikitaShlyakhtin/habit_tracker/blob/2c02a419b48b9416ebc969041f24839ff4c7e591/assets/presentation_screens/eng/02.png)|![New habit](https://github.com/NikitaShlyakhtin/habit_tracker/blob/2c02a419b48b9416ebc969041f24839ff4c7e591/assets/presentation_screens/eng/03.png)|
