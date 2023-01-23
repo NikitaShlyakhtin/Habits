@@ -10,6 +10,12 @@
 * See the statistics for the year in the form of a graph and a heatmap
 * Analyze the percentage of feasibility for a month and all the time
 
+**Stack**:
+* State management - Provider
+* Database - Hive
+* Notifications - flutter_local_notifications plugin
+* Routing - Navigator 
+
 [Download](https://apps.rustore.ru/app/com.nikitashlyakhtin.habits) Habits on Rustore
 
 ||||
