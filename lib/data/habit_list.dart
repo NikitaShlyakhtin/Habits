@@ -116,6 +116,10 @@ class HabitList extends ChangeNotifier {
           time: '16:30',
           id: 1)
     ];
+    updateWeek();
+    for (var e in _habits) {
+      e.updateDoneThisYear();
+    }
     saveData();
   }
 

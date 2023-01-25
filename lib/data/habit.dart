@@ -58,7 +58,7 @@ class Habit {
   }
 
   int get missed {
-    int passedWeeks = (all / 7).round();
+    int passedWeeks = (all / 7).ceil();
     int missed = (frequency * passedWeeks) - times;
     return missed > 0 ? missed : 0;
   }
@@ -70,22 +70,24 @@ class Habit {
     DateTime startOfCurrentMonth = DateTime(now.year, now.month, 1);
     Map<DateTime, bool> map = yearMapFromMemory(doneThisYear);
     for (var day in map.keys) {
-      if (day.compareTo(startOfCurrentMonth) > 0) {
+      if (day.compareTo(startOfCurrentMonth) >= 0) {
         monthAll++;
         if (map[day] == true) monthDone++;
       }
     }
-    int passedWeeks = (monthAll / 7).round();
+    int passedWeeks = (monthAll / 7).ceil();
     double n = ((monthDone / (passedWeeks * frequency)) * 100);
-    int month = n.isNaN || n.isInfinite ? 0 : n.round();
+    // int month = n.isNaN || n.isInfinite ? 0 : n.round();
+    int month = n.round();
     return month;
   }
 
   int get total {
     int total = 0;
-    int passedWeeks = (all / 7).round();
+    int passedWeeks = (all / 7).ceil();
     double n = ((times / (passedWeeks * frequency)) * 100);
-    total = n.isNaN || n.isInfinite ? 0 : n.round();
+    // total = n.isNaN || n.isInfinite ? 0 : n.round();
+    total = n.round();
     return total;
   }
 

@@ -17,6 +17,15 @@ class _CustomCheckboxState extends State<CustomCheckbox> {
   final week = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
   bool checked = false;
 
+  bool get active {
+    DateTime now = DateTime.now();
+    int weekDay = now.weekday;
+    DateTime day = now
+        .subtract(Duration(days: weekDay - 1))
+        .add(Duration(days: widget.index));
+    return day.compareTo(now) <= 0 ? true : false;
+  }
+
   int get dayOfWeek {
     DateTime now = DateTime.now();
     int weekDay = now.weekday;
@@ -41,17 +50,19 @@ class _CustomCheckboxState extends State<CustomCheckbox> {
           height: 30,
           child: Consumer<HabitList>(
               builder: (context, habits, child) => ElevatedButton(
-                    onPressed: () {
-                      setState(() {
-                        widget.habit.doneThisWeek[widget.index] =
-                            !widget.habit.doneThisWeek[widget.index];
-                        widget.habit.doneThisWeek[widget.index]
-                            ? widget.habit.done++
-                            : widget.habit.done--;
-                        widget.habit.updateDoneThisYear();
-                        habits.saveData();
-                      });
-                    },
+                    onPressed: active
+                        ? () {
+                            setState(() {
+                              widget.habit.doneThisWeek[widget.index] =
+                                  !widget.habit.doneThisWeek[widget.index];
+                              widget.habit.doneThisWeek[widget.index]
+                                  ? widget.habit.done++
+                                  : widget.habit.done--;
+                              widget.habit.updateDoneThisYear();
+                              habits.saveData();
+                            });
+                          }
+                        : null,
                     style: ElevatedButton.styleFrom(
                       elevation: 0,
                       padding: EdgeInsets.zero,

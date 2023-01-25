@@ -65,12 +65,13 @@ List<double> convertForGraph(Habit habit) {
     int monthDone = 0;
     int monthAll = 0;
     DateTime now = DateTime.now().subtract(Duration(days: 31 * i));
-    int numberOfCurrentMonth = now.month - 1;
     DateTime startOfCurrentMonth = DateTime(now.year, now.month, 1);
+    DateTime endOfCurrentMonth = DateTime(now.year, now.month + 1, 0);
     Map<DateTime, bool> map = yearMapFromMemory(habit.doneThisYear);
     bool flag = false;
     for (var day in map.keys) {
-      if (day.compareTo(startOfCurrentMonth) > 0 && day.compareTo(now) < 0) {
+      if (day.compareTo(startOfCurrentMonth) >= 0 &&
+          day.compareTo(endOfCurrentMonth) <= 0) {
         monthAll++;
         flag = true;
         if (map[day] == true) monthDone++;
@@ -78,15 +79,12 @@ List<double> convertForGraph(Habit habit) {
     }
 
     if (flag) {
-      int passedWeeks = (monthAll / 7).round();
+      int passedWeeks = (monthAll / 7).ceil();
 
       double n = ((monthDone / (passedWeeks * habit.frequency)) * 100);
       data.add(n > 100 ? 100 : n);
     } else {
-      while (data.length < 12) {
-        data.add(0);
-      }
-      return data.reversed.toList();
+      data.add(0);
     }
   }
   return data.reversed.toList();
