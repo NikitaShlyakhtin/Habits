@@ -17,11 +17,18 @@ class _CustomCheckboxState extends State<CustomCheckbox> {
   final week = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
   bool checked = false;
 
+  int get dayOfWeek {
+    DateTime now = DateTime.now();
+    int weekDay = now.weekday;
+    int dayOfWeek = now
+        .subtract(Duration(days: weekDay - 1))
+        .add(Duration(days: widget.index))
+        .day;
+    return dayOfWeek;
+  }
+
   @override
   Widget build(BuildContext context) {
-    var d = DateTime.now();
-    var weekDay = d.weekday;
-    var dayOfWeek = d.subtract(Duration(days: weekDay - 1)).day + widget.index;
     return Column(
       children: [
         Opacity(
