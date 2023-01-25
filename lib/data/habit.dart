@@ -92,8 +92,8 @@ class Habit {
   void updateDoneThisYear() {
     Map<DateTime, bool> map = yearMapFromMemory(doneThisYear);
     DateTime now = DateTime.now();
-    DateTime now2 = DateTime(now.year, now.month, now.day);
-    DateTime monday = now2.subtract(Duration(days: now2.weekday - 1));
+    now = DateTime(now.year, now.month, now.day);
+    DateTime monday = now.subtract(Duration(days: now.weekday - 1));
     for (int i = 0; i < 7; i++) {
       DateTime nextDay = monday.add(Duration(days: i));
       map[nextDay] = doneThisWeek[i];

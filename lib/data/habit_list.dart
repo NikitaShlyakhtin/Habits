@@ -126,6 +126,9 @@ class HabitList extends ChangeNotifier {
     _habits = list[1].cast<Habit>();
     _startOfCurrentWeek = list[2];
     updateWeek();
+    for (var e in _habits) {
+      e.updateDoneThisYear();
+    }
   }
 
   void saveData() {
