@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:habit_tracker/data/habit.dart';
+import 'package:habit_tracker/util/habit_info_page/edit_menu/change_habit_frequency.dart';
 import 'package:habit_tracker/util/habit_info_page/edit_menu/change_habit_name.dart';
 import 'package:habit_tracker/util/habit_info_page/edit_menu/confirm_delete_dialog.dart';
 
@@ -60,6 +61,10 @@ class _EditMenuState extends State<EditMenu> {
             builder: (BuildContext context) => ChangeHabitName(widget.habit));
         break;
       case EditMenuItems.frequency:
+        showDialog(
+            context: context,
+            builder: (BuildContext context) =>
+                ChangeHabitFrequency(widget.habit));
         break;
       case EditMenuItems.reminder:
         break;

@@ -35,6 +35,8 @@ class Habit {
   @HiveField(10)
   int id;
 
+  late int localFrequency;
+
   Habit(
       {required this.name,
       required this.color,
@@ -42,7 +44,9 @@ class Habit {
       required this.reminder,
       required this.reminderText,
       required this.time,
-      required this.id});
+      required this.id}) {
+    localFrequency = frequency;
+  }
 
   int get times {
     int times = 0;
