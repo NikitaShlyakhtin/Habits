@@ -82,6 +82,10 @@ class HabitList extends ChangeNotifier {
 
     id++;
 
+    for (var e in _habits) {
+      e.updateDoneThisYear();
+    }
+
     saveData();
     notifyListeners();
   }
