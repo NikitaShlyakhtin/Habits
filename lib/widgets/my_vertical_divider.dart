@@ -9,6 +9,7 @@ class MyVerticalDivider extends StatelessWidget {
       thickness: 2,
       indent: 15,
       endIndent: 15,
+      color: Theme.of(context).dividerColor,
     );
   }
 }

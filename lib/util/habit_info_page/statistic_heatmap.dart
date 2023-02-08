@@ -27,8 +27,9 @@ class StatisticHeatmap extends StatelessWidget {
       child: Column(
         children: [
           const HistoryLabelRow(),
-          const Divider(
+          Divider(
             thickness: 2,
+            color: Theme.of(context).dividerColor,
           ),
           HeatMap(
             datasets: dataSets,

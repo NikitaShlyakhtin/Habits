@@ -69,7 +69,7 @@ class _CustomCheckboxState extends State<CustomCheckbox> {
                       shape: const CircleBorder(),
                       backgroundColor: widget.habit.doneThisWeek[widget.index]
                           ? stringToColor(widget.habit.color)
-                          : Theme.of(context).backgroundColor,
+                          : Theme.of(context).splashColor,
                     ),
                     child: Text(dayOfWeek.toString(),
                         style: TextStyle(

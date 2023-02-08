@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:habit_tracker/data/habit.dart';
 import 'package:habit_tracker/widgets/gap.dart';
 import 'package:habit_tracker/widgets/my_text_field.dart';
 import 'package:habit_tracker/widgets/title_column.dart';
@@ -45,7 +44,7 @@ class _MySwitchState extends State<MySwitch> {
   Widget build(BuildContext context) {
     return Consumer<HabitList>(
         builder: (context, habitList, child) => Transform.scale(
-              scale: 1.4,
+              scale: 1,
               child: Switch(
                   value: habitList.reminder,
                   onChanged: (value) {

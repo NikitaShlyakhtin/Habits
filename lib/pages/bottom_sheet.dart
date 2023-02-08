@@ -35,11 +35,11 @@ class BottomSheetColumn extends StatelessWidget {
         const SheetTitleRow(),
         InputHabitRow(),
         const ColorRow(),
-        const Divider(thickness: 2),
+        Divider(thickness: 2, color: Theme.of(context).dividerColor),
         const FrequencyRow(),
-        const Divider(thickness: 2),
+        Divider(thickness: 2, color: Theme.of(context).dividerColor),
         const ReminderRow(),
-        const Divider(thickness: 2),
+        Divider(thickness: 2, color: Theme.of(context).dividerColor),
       ],
     );
   }
