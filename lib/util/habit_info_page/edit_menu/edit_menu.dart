@@ -1,8 +1,27 @@
 import 'package:flutter/material.dart';
 import 'package:habit_tracker/data/habit.dart';
+import 'package:habit_tracker/util/habit_info_page/edit_menu/change_habit_name.dart';
 import 'package:habit_tracker/util/habit_info_page/edit_menu/confirm_delete_dialog.dart';
 
-enum EditMenuItems { delete }
+enum EditMenuItems {
+  name,
+  frequency,
+  reminder,
+  delete;
+
+  IconData get icon {
+    switch (this) {
+      case delete:
+        return Icons.delete_outlined;
+      case name:
+        return Icons.badge_outlined;
+      case frequency:
+        return Icons.repeat;
+      case reminder:
+        return Icons.notifications_outlined;
+    }
+  }
+}
 
 class EditMenu extends StatefulWidget {
   final Habit habit;
@@ -22,25 +41,49 @@ class _EditMenuState extends State<EditMenu> {
         onSelected: (EditMenuItems item) {
           setState(() {
             selectedMenu = item;
-            showDialog(
-                context: context,
-                builder: (BuildContext context) =>
-                    ConfirmDeleteDialog(widget.habit));
+            _selectedMenuItemHandler(item);
           });
         },
         itemBuilder: (BuildContext context) => <PopupMenuEntry<EditMenuItems>>[
-              PopupMenuItem<EditMenuItems>(
-                value: EditMenuItems.delete,
-                child: Row(
-                  children: const [
-                    Icon(Icons.delete_outlined),
-                    SizedBox(width: 5),
-                    Text(
-                      'Delete',
-                    ),
-                  ],
-                ),
-              ),
+              myPopupMenuItem(EditMenuItems.name, 'Change name'),
+              myPopupMenuItem(EditMenuItems.frequency, 'Change frequency'),
+              myPopupMenuItem(EditMenuItems.reminder, 'Change reminder'),
+              myPopupMenuItem(EditMenuItems.delete, 'Delete habit'),
             ]);
+  }
+
+  void _selectedMenuItemHandler(EditMenuItems item) {
+    switch (item) {
+      case EditMenuItems.name:
+        showDialog(
+            context: context,
+            builder: (BuildContext context) => ChangeHabitName(widget.habit));
+        break;
+      case EditMenuItems.frequency:
+        break;
+      case EditMenuItems.reminder:
+        break;
+      case EditMenuItems.delete:
+        showDialog(
+            context: context,
+            builder: (BuildContext context) =>
+                ConfirmDeleteDialog(widget.habit));
+        break;
+    }
+  }
+
+  PopupMenuItem<EditMenuItems> myPopupMenuItem(
+      EditMenuItems value, String text) {
+    return PopupMenuItem<EditMenuItems>(
+      padding: const EdgeInsets.symmetric(horizontal: 8),
+      value: value,
+      child: Row(
+        children: [
+          Icon(value.icon),
+          const SizedBox(width: 8),
+          Text(text),
+        ],
+      ),
+    );
   }
 }

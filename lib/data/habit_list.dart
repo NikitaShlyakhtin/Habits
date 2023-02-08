@@ -138,6 +138,7 @@ class HabitList extends ChangeNotifier {
   void saveData() {
     box.clear();
     box.addAll([id, _habits, _startOfCurrentWeek]);
+    notifyListeners();
   }
 
   void updateWeek() {
