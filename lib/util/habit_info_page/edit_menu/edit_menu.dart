@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:habit_tracker/data/habit.dart';
 import 'package:habit_tracker/util/habit_info_page/edit_menu/change_habit_frequency.dart';
 import 'package:habit_tracker/util/habit_info_page/edit_menu/change_habit_name.dart';
+import 'package:habit_tracker/util/habit_info_page/edit_menu/change_habit_reminder.dart';
 import 'package:habit_tracker/util/habit_info_page/edit_menu/confirm_delete_dialog.dart';
 
 enum EditMenuItems {
@@ -67,6 +68,10 @@ class _EditMenuState extends State<EditMenu> {
                 ChangeHabitFrequency(widget.habit));
         break;
       case EditMenuItems.reminder:
+        showDialog(
+            context: context,
+            builder: (BuildContext context) =>
+                ChangeHabitReminder(widget.habit));
         break;
       case EditMenuItems.delete:
         showDialog(

@@ -17,7 +17,10 @@ class ChangeHabitFrequency extends StatelessWidget {
         actionsAlignment: MainAxisAlignment.spaceAround,
         actions: <Widget>[
           TextButton(
-            onPressed: () => Navigator.pop(context, 'Cancel'),
+            onPressed: () {
+              habit.localFrequency = habit.frequency;
+              Navigator.pop(context, 'Cancel');
+            },
             child: const Text('Cancel'),
           ),
           TextButton(
