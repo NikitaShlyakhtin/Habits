@@ -30,6 +30,7 @@ class ChangeHabitName extends StatelessWidget {
             onPressed: () {
               if (myController.text != '') {
                 habit.name = myController.text;
+                habitList.updateReminder();
                 habitList.saveData();
                 Navigator.pop(context, 'OK');
                 Navigator.pop(context);

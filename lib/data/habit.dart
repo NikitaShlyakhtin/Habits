@@ -39,6 +39,8 @@ class Habit {
 
   late bool localReminder;
 
+  late String localTime;
+
   Habit(
       {required this.name,
       required this.color,
@@ -49,6 +51,7 @@ class Habit {
       required this.id}) {
     localFrequency = frequency;
     localReminder = reminder;
+    localTime = time;
   }
 
   int get times {

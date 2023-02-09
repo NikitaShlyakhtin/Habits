@@ -157,6 +157,21 @@ class HabitList extends ChangeNotifier {
     }
     saveData();
   }
+
+  void updateReminder() {
+    for (var e in _habits) {
+      if (e.reminder) {
+        String title = e.name;
+        String reminderText = e.reminderText;
+        TimeOfDay time = stringToTime(e.time);
+        LocalNoticeService().cancelNotification(e.id);
+        LocalNoticeService().scheduleDailyNotification(
+            id, title, reminderText, time.hour, time.minute);
+      } else {
+        LocalNoticeService().cancelNotification(e.id);
+      }
+    }
+  }
 }
 
 class NewHabit {
